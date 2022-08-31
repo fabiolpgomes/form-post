@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Form from "./components/Form";
+import Posts from "./components/Posts";
+import { useState } from "react";
 
 function App() {
+  const [posts, setPosts] = useState([
+    {
+      about: "react",
+      lvlDif: "7",
+      onLimit: false,
+      nickname: "quero café",
+      message: "pelo menos é melhor do que o DOM",
+    },
+    {
+      about: "props",
+      lvlDif: "8",
+      onLimit: true,
+      nickname: "sei errar",
+      message: "nunca sei quando usar mas parece que funciona",
+    },
+    {
+      about: "map",
+      lvlDif: "6",
+      onLimit: true,
+      nickname: "uma latinha resolve",
+      message: "até que vai mas tem que empurrar",
+    },
+  ]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Posts posts={posts} setPosts={setPosts} />
+      <Form posts={posts} setPosts={setPosts} />
     </div>
   );
 }
