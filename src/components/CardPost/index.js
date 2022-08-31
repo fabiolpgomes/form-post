@@ -1,12 +1,13 @@
 import { Card, CardHeader, ListGroup, ListGroupItem, Button } from "reactstrap";
 
 function CardPost({ post, posts, setPosts }) {
-  function handleDelete(message) {
-    let filtedPost = posts.filter((post) => {
-      return post.message !== message;
+  function handleDelete(msg) {
+    //Deletar um post tenho que filtrar a minha array menos algume que foi deletado
+    let filtedPosts = posts.filter((post) => {
+      return post.message !== msg;
     });
 
-    setPosts(filtedPost);
+    setPosts(filtedPosts);
   }
 
   return (
@@ -16,7 +17,7 @@ function CardPost({ post, posts, setPosts }) {
         height: "auto",
       }}
     >
-      <CardHeader style={{ color: post.onLimit ? "red" : "green" }}>
+      <CardHeader style={{ color: post.onLimit ? "red" : "green" }}>  //Renderizacao 
         {post.about}
       </CardHeader>
       <ListGroup flush className="list">
@@ -28,7 +29,7 @@ function CardPost({ post, posts, setPosts }) {
         <Button
           color="danger"
           size="sm"
-          onClick={() => handleDelete(post.message)}
+          onClick={() => handleDelete(post.message)}  //precisa passar uma funcao anonima Callback
         >
           Deletar
         </Button>
